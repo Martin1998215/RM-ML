@@ -8,6 +8,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
 
+hide = """
+<style>
+div[data-testid="stConnectionStatus"] {
+    display: none !important;
+</style>
+"""
+
+st.markdown(hide, unsafe_allow_html=True)
+
 
 label = LabelEncoder()
 rf = RandomForestRegressor(n_estimators=300)
