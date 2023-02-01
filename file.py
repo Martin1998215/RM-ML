@@ -326,7 +326,7 @@ if selected == "Test":
     st.write('---')
 
 
-if selected == "House Rent":
+if selected == "Rent Evaluation":
 
     rent_model = pickle.load(
         open("rent_model.sav", 'rb'))
