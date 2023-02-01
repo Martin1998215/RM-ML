@@ -23,10 +23,10 @@ rf = RandomForestRegressor(n_estimators=300)
 
 with st.sidebar:
     selected = option_menu("Menu List",
-                           ["Home", "House Rent",
+                           ["Home", "Rent Evaluation",
                                "Compare Places", "About Us"],
-                           icons=["house-door", "file-bar-graph", "file-bar-graph",
-                                  "activity"],
+                           icons=["house-door", "reception-4", "graph-up-arrow",
+                                  "list-task"],
                            default_index=0)
 
 
