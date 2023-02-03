@@ -71,6 +71,17 @@ if selected == "Home":
     - Helps you budget well about your rentals. 
 
     ''')
+
+    st.write('---')
+    st.write('### Profile')
+    new_image = img0.resize((600, 300))
+    st.image(img0)
+    st.info('''
+    - Martin Sichibeya
+    - Founder, AI Engineer.
+    - Locas Technology
+    ''')
+
     st.write('---')
     st.write('### Our Contacts')
 
@@ -80,14 +91,13 @@ if selected == "Home":
     - Or Email us on locastechnology@gmail.com
 
     ''')
+
     st.write('---')
-    st.write('### Profile')
-    new_image = img0.resize((600, 300))
-    st.image(img0)
+    st.write("### Location")
+
     st.info('''
-    - Martin Sichibeya
-    - Founder, AI Engineer.
-    - Locas Technology
+    We are located in Livingstone town at Mosi O Tunya business center.
+
     ''')
 
 
@@ -1107,8 +1117,9 @@ if selected == "About Us":
     ''')
     st.write('---')
 
+    st.write('### Please Note')
+
     st.info('''
-    ### Please Note:
     These models just give estimations, their goal is to be as close to the actual price as possible.
     It is worthy noting that they can be wrong, can give unreasonable amounts especially for low cost areas 
     like malota, Zecco or Ngwenya. This is because the model didnt see such training data from those areas as 
@@ -1135,5 +1146,12 @@ if selected == "About Us":
     ### For More Info:
     - Contact us on **0976 03 57 66**
     - Or Email us on **locastechnology@gmail.com**
+
+    ''')
+    st.write('---')
+    st.write('### Location')
+
+    st.info('''
+    We are located in Livingstone town at Mosi O Tunya business center.
 
     ''')
