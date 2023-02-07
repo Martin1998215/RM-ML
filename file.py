@@ -37,14 +37,14 @@ Predicitive Modeling.
 
 Let AI help you evaluate houses.
 
-**Locas Technology**.
+**Locas AI**.
 
 **0976 03 57 66.**
 
 ''')
 
 if selected == "Home":
-    st.title("Locas Technology")
+    st.title("Locas AI")
     st.write('---')
     st.info("### Welcome to our Machine Learning App")
 
@@ -79,7 +79,7 @@ if selected == "Home":
     st.info('''
     - Martin Sichibeya
     - Founder, AI Engineer.
-    - Locas Technology
+    - Locas AI
     ''')
 
     st.write('---')
@@ -341,7 +341,7 @@ if selected == "Rent Evaluation":
     rent_model = pickle.load(
         open("rent_model.sav", 'rb'))
 
-    st.title("Locas Technology")
+    st.title("Locas AI")
     st.write('---')
     st.info("### Predict Rent Price For A House.")
     st.write("### Inputs Here....")
@@ -538,7 +538,7 @@ if selected == "Compare Places":
     rent_model = pickle.load(
         open("rent_model.sav", 'rb'))
 
-    st.title("Locas Technology")
+    st.title("Locas AI")
     st.write('---')
     st.info("### Make Comparables Based on Locatins/Sections")
 
@@ -1094,11 +1094,11 @@ if selected == "Compare Places":
      to rent accross 5 different areas of the same Cost area.''')
 
 if selected == "About Us":
-    st.title("Locas Technology")
+    st.title("Locas AI")
     st.write('---')
     st.subheader("About Us")
     st.info('''
-    Locas Technology is about building predictive models in the real estate industry to help users evaluate 
+    Locas AI is about building predictive models in the real estate industry to help users evaluate 
     much a particular house would cost to rent or sale. This is done merely by inputing house features 
     of a house into prompts. Features like number of rooms, number of bedrooms, tiles or not, ceiling or not 
     inside toilet or not, type of fence- wall, wire or non etc. Then you click the enter button and the 
