@@ -351,7 +351,7 @@ if selected == "Rent Evaluation":
 
     broom = st.number_input("Number of Bedrooms", step=1)
     year = st.number_input("Current Year eg 2023", step=1)
-    in_toilet = st.selectbox("Is Toilet Inside?",
+    in_toilet = st.selectbox("Self Contained?",
                              ["Yes", "No"])
     if in_toilet == "Yes":
         toilet = 1
@@ -415,8 +415,9 @@ if selected == "Rent Evaluation":
 
     section = st.selectbox(
         "Section Located", [217, "Dcentral", "Dnorth", "DNorthEx", "Dside", "DSVEtx", "EllenBrittel", "KombeDrive",
-                            "Highlands", "Libuyu", "Linda", "MA", "Malota", "MB", "MC", "MD", "ME", "Mesinja", "Namatama", "Ngwenya",
-                            "NottieBrod", "Railways", "TownArea", "Zecco"])
+                            "Highlands", "Libuyu", "Linda", "MA [Maramba]", "Malota", "MB [Maramba]",
+                            "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Messanger [Maramba]",
+                            "Namatama", "Ngwenya", "NottieBrod", "Railways", "TownArea", "Zecco"])
 
     if section == 217:
         sect = 0
@@ -451,25 +452,25 @@ if selected == "Rent Evaluation":
     elif section == "Linda":
         sect = 13
         area = 1
-    elif section == "MA":
+    elif section == "MA [Maramba]":
         sect = 14
         area = 1
     elif section == "Malota":
         sect = 19
         area = 0
-    elif section == "MB":
+    elif section == "MB [Maramba]":
         sect = 15
         area = 1
-    elif section == "MC":
+    elif section == "MC [Maramba]":
         sect = 16
         area = 1
-    elif section == "MD":
+    elif section == "MD [Maramba]":
         sect = 17
         area = 1
-    elif section == "ME":
+    elif section == "ME [Maramba]":
         sect = 18
         area = 1
-    elif section == "Mesinja":
+    elif section == "Messanger [Maramba]":
         sect = 21
         area = 1
     elif section == "Namatama":
@@ -549,7 +550,7 @@ if selected == "Compare Places":
 
     broom = st.number_input("Number of Bedrooms", step=1)
     year = st.number_input("Current Year eg 2023", step=1)
-    in_toilet = st.selectbox("Is Toilet Inside?",
+    in_toilet = st.selectbox("Self Contained?",
                              ["Yes", "No"])
     if in_toilet == "Yes":
         toilet = 1
