@@ -347,7 +347,7 @@ if selected == "Rent Evaluation":
     st.write("### Inputs Here....")
 
     rooms = st.number_input(
-        "Number of Rooms", step=1)
+        "Total Number of Rooms- Living, Dining, Kitchen, Toilets, Bathroom, Bedrooms,Master Toilet rooms etc", step=1)
 
     broom = st.number_input("Number of Bedrooms", step=1)
     year = st.number_input("Current Year eg 2023", step=1)
@@ -387,10 +387,12 @@ if selected == "Rent Evaluation":
                            ["No", "Yes"])
     if air_con == "Yes":
         ac = 1
+        ac_num = st.number_input("Number of Air Cons?", 1, step=1)
     else:
         ac = 0
+        ac_num = 0
 
-    ac_num = st.number_input("Number of Air Cons?", step=1)
+    # ac_num = st.number_input("Number of Air Cons?", step=1)
 
     tiles = st.selectbox("Has Tiles?",
                          ["No", "Yes"])
@@ -546,7 +548,7 @@ if selected == "Compare Places":
     st.write("### Inputs Here....")
 
     rooms = st.number_input(
-        "Number of Rooms", step=1)
+        "Total Number of Rooms- Living, Dining, Kitchen, Toilets, Bathroom, Bedrooms,Master Toilet rooms etc", step=1)
 
     broom = st.number_input("Number of Bedrooms", step=1)
     year = st.number_input("Current Year eg 2023", step=1)
@@ -586,10 +588,10 @@ if selected == "Compare Places":
                            ["No", "Yes"])
     if air_con == "Yes":
         ac = 1
+        ac_num = st.number_input("Number of Air Cons?", 1, step=1)
     else:
         ac = 0
-
-    ac_num = st.number_input("Number of Air Cons?", step=1)
+        ac_num = 0
 
     tiles = st.selectbox("Has Tiles?",
                          ["No", "Yes"])
@@ -1061,6 +1063,14 @@ if selected == "Compare Places":
         Y_array = [rent_prediction, rent_prediction2,
                    rent_prediction3, rent_prediction4, rent_prediction5]
 
+        Y_table = [round(rent_prediction[0], 2), round(rent_prediction2[0], 2), round(rent_prediction3[0], 2),
+                   round(rent_prediction4[0], 2), round(rent_prediction5[0], 2)]
+
+        arry = [rent_prediction, rent_prediction2,
+                rent_prediction3, rent_prediction4, rent_prediction5]
+
+        arry.sort()
+
         st.write('---')
 
         fig_report = plt.figure(
@@ -1078,6 +1088,25 @@ if selected == "Compare Places":
         plt.grid(True)
 
         st.pyplot(fig_report)
+
+        st.write('---')
+        st.write('### More Info')
+        ar1 = arry[4]
+        ar2 = arry[0]
+        sum_ar = ar1 - ar2
+
+        st.write(f"High Price Value Is K {round(ar1[0],2)}")
+        st.write(f"Lowest Price Value Is K {round(ar2[0],2)}")
+        st.info(
+            f"Amount Difference Is K {round(sum_ar[0],0)}. Thats the price variance between the 5 houses.")
+
+        st.write('---')
+
+        df_table = pd.DataFrame(np.column_stack([X_array, Y_table]),
+                                columns=['Location', 'Rent Price (K)'])
+
+        st.write('### Table Summary')
+        st.dataframe(df_table)
 
     st.write('---')
     st.subheader("Disclaimer!")
