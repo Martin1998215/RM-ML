@@ -638,7 +638,7 @@ if selected == "Compare Places":
         area = 1
     elif section == "DNorthEx":
         sect = 3
-        area = 1
+        area = 2
     elif section == "Dside":
         sect = 8
         area = 1
@@ -695,6 +695,7 @@ if selected == "Compare Places":
         area = 1
     elif section == "TownArea":
         sect = 27
+        area = 2
     elif section == "Zecco":
         sect = 29
         area = 0
@@ -1095,7 +1096,7 @@ if selected == "Compare Places":
         ar2 = arry[0]
         sum_ar = ar1 - ar2
 
-        st.write(f"High Price Value Is K {round(ar1[0],2)}")
+        st.write(f"Highest Price Value Is K {round(ar1[0],2)}")
         st.write(f"Lowest Price Value Is K {round(ar2[0],2)}")
         st.info(
             f"Amount Difference Is K {round(sum_ar[0],0)}. Thats the price variance between the 5 houses.")
@@ -1127,14 +1128,16 @@ if selected == "About Us":
     st.title("Locas AI")
     st.write('---')
     st.subheader("About Us")
+
     st.info('''
     Locas AI is about building predictive models in the real estate industry to help users evaluate 
     much a particular house would cost to rent or sale. This is done merely by inputing house features 
     of a house into prompts. Features like number of rooms, number of bedrooms, tiles or not, ceiling or not 
     inside toilet or not, type of fence- wall, wire or non etc. Then you click the enter button and the 
     result of the estimated price of the house to rent is displayed right in front of you. It works like 
-    magic.  
+    magic.   
     ''')
+
     st.write('---')
 
     st.info('''
