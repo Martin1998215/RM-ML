@@ -31,7 +31,7 @@ with st.sidebar:
 
 
 st.sidebar.write('''
-**AI For Real Estate**
+**AI For Property Evaluation**
 
 Predicitive Modeling.
 
@@ -46,7 +46,7 @@ Let AI help you evaluate houses.
 if selected == "Home":
     st.title("Locas AI")
     st.write('---')
-    st.info("### Welcome to our Machine Learning App")
+    st.info("**Welcome to Locas AI, A Data driven platform for Real Estate and Property management services.**")
 
     from PIL import Image
     img0 = Image.open("martincover.jpg")
@@ -54,7 +54,7 @@ if selected == "Home":
     st.image(img1, caption="Cover Photo")
 
     st.info('''
-    ### AI For Real Estate.
+    ### AI For Property Evaluation.
     Let AI help you evaluate a house to rent so that you can manage your budget well.
 
     Also help you make price comparisons between different locations.
@@ -71,6 +71,22 @@ if selected == "Home":
     - Helps you budget well about your rentals. 
 
     ''')
+    st.write('### More')
+
+    st.info('''
+   
+    We are working on a landing website which will help you do the following:
+    - find a house to rent or buy as quick as possible.
+    - Agents to inquire for houses.
+    - Evaluate houses for sale using AI. You wont need a real estate agent to do that for you.
+    - Post houses to rent out. 
+
+    ''')
+
+    st.info('''
+    - Evaluate houses for sale using AI. You wont need a real estate agent to do that for you.
+
+    ''')
 
     st.write('---')
     st.write('### Profile')
@@ -78,7 +94,7 @@ if selected == "Home":
     st.image(img0)
     st.info('''
     - Martin Sichibeya
-    - Founder, AI Engineer.
+    - Founder and AI Engineer.
     - Locas AI
     ''')
 
@@ -350,7 +366,7 @@ if selected == "Rent Evaluation":
         "Total Number of Rooms- Living, Dining, Kitchen, Toilets, Bathroom, Bedrooms,Master Toilet rooms etc", step=1)
 
     broom = st.number_input("Number of Bedrooms", step=1)
-    year = st.number_input("Current Year eg 2023", step=1)
+    year = st.number_input("Current Year eg 2023", 2023)
     in_toilet = st.selectbox("Self Contained?",
                              ["Yes", "No"])
     if in_toilet == "Yes":
@@ -551,7 +567,7 @@ if selected == "Compare Places":
         "Total Number of Rooms- Living, Dining, Kitchen, Toilets, Bathroom, Bedrooms,Master Toilet rooms etc", step=1)
 
     broom = st.number_input("Number of Bedrooms", step=1)
-    year = st.number_input("Current Year eg 2023", step=1)
+    year = st.number_input("Current Year eg 2023", 2023)
     in_toilet = st.selectbox("Self Contained?",
                              ["Yes", "No"])
     if in_toilet == "Yes":
