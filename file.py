@@ -24,8 +24,8 @@ rf = RandomForestRegressor(n_estimators=300)
 with st.sidebar:
     selected = option_menu("Menu List",
                            ["Home", "Rent Evaluation",
-                               "Compare Places", "About Us"],
-                           icons=["house-door", "reception-4", "graph-up-arrow",
+                               "Compare Places", "Limitations", "About Us"],
+                           icons=["house-door", "reception-4", "graph-up-arrow", "exclamation-triangle",
                                   "list-task"],
                            default_index=0)
 
@@ -77,6 +77,7 @@ if selected == "Home":
     st.info('''
     - Martin Sichibeya
     - Founder and AI Engineer.
+    - I Love to train Large AI models.
     - Locas AI
     **Solve Intelligence and use it to solve everything else.**
     ''')
@@ -112,19 +113,6 @@ if selected == "Home":
 
     st.write('---')
 
-    st.write('### Limitations')
-    st.info('''
-    - Performs badly on houses with Kitchen Units, Inbuilt Wordbrobes, Water Tanks, Garage etc as it does not consider them existable as it makes predictions.
-    - Poor performance on houses in the following areas: Malota, MD maramba, Zecco, Airport etc as the model was not exposed to alot of training from those areas.
-    - Model assumes all houses have electricity and water. Also assumes all houses are completely built.
-    - Most houses collected as training data were assumed rent prices were independent from electricity and water bills.
-    - Some answers the model will give will be abit off. This is because the model isnt 100%. But it still has enough room for improvement by doing more training and feeding or exposing it to more data.
-    - This Is strickly for Livingstone. Much of the data used to train the model was collected from Livingstone.
-    
-    ''')
-
-    st.write('---')
-
     st.write('### Our Contacts')
 
     st.info('''
@@ -142,6 +130,42 @@ if selected == "Home":
 
     ''')
 
+
+if selected == "Limitations":
+    st.title("Locas AI")
+    st.write('---')
+
+    st.write('### Limitations')
+    st.warning('''
+    - Performs badly on houses with Kitchen Units, Inbuilt Wordbrobes, Water Tanks, Garage etc as it does not consider them existable as it makes predictions.
+    '''
+               )
+
+    st.warning('''
+    - Poor performance on houses in the following areas: Malota, MD maramba, Zecco, Airport etc as the model was not exposed to alot of training from those areas.
+    ''')
+
+    st.warning('''
+    - Model assumes all houses have electricity and water. Also assumes all houses are completely built.
+    ''')
+    st.warning('''
+    - Most houses collected as training data were assumed rent prices were independent from electricity and water bills.
+    ''')
+    st.warning('''
+    - Some answers the model will give will be abit off. This is because the model isnt 100%. But it still has enough room for improvement by doing more training and feeding or exposing it to more data.
+    ''')
+    st.warning('''
+    - This Is strickly for Livingstone. Much of the data used to train the model was collected from Livingstone. 
+    ''')
+
+    st.write('---')
+    st.info('''
+    ### For More Info:
+    - Contact us on 0976 03 57 66
+    - Or Email us on locastechnology@gmail.com
+
+    ''')
+    st.write('---')
 
 if selected == "Test":
 
@@ -393,7 +417,7 @@ if selected == "Rent Evaluation":
 
     broom = st.number_input("Number of Bedrooms", step=1)
     year = st.number_input("Current Year eg 2023", 2023)
-    in_toilet = st.selectbox("Self Contained?",
+    in_toilet = st.selectbox("Self Contained? [Inside Toilet]",
                              ["Yes", "No"])
     if in_toilet == "Yes":
         toilet = 1
@@ -458,33 +482,34 @@ if selected == "Rent Evaluation":
         stand = 0
 
     section = st.selectbox(
-        "Section Located", [217, "Dcentral", "Dnorth", "DNorthEx", "Dside", "DSVEtx", "EllenBrittel", "KombeDrive",
-                            "Highlands", "Libuyu", "Linda", "MA [Maramba]", "Malota", "MB [Maramba]",
+        "Section Located", [217, "Dambwa Central", "Dambwa North", "Dambwa North Ext", "Dambwa Site",
+                            "Dambwa Site Ext", "Ellaine Brittel", "Kombe Drive", "Highlands", "Libuyu",
+                            "Linda", "MA [Maramba]", "MB [Maramba]",
                             "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Messanger [Maramba]",
-                            "Namatama", "Ngwenya", "NottieBrod", "Railways", "TownArea", "Zecco"])
+                            "Namatama Ext", "Ngwenya", "Nottie Brodie", "Railways", "Town Area"])
 
     if section == 217:
         sect = 0
         area = 2
-    elif section == "Dcentral":
+    elif section == "Dambwa Central":
         sect = 5
         area = 1
-    elif section == "Dnorth":
+    elif section == "Dambwa North":
         sect = 6
         area = 1
-    elif section == "DNorthEx":
+    elif section == "Dambwa North Ext":
         sect = 3
         area = 2
-    elif section == "Dside":
+    elif section == "Dambwa Site":
         sect = 8
         area = 1
-    elif section == "DSVEtx":
+    elif section == "Dambwa Site Ext":
         sect = 4
         area = 1
-    elif section == "EllenBrittel":
+    elif section == "Ellaine Brittel":
         sect = 9
         area = 2
-    elif section == "KombeDrive":
+    elif section == "Kombe Drive":
         sect = 11
         area = 2
     elif section == "Highlands":
@@ -517,19 +542,19 @@ if selected == "Rent Evaluation":
     elif section == "Messanger [Maramba]":
         sect = 21
         area = 1
-    elif section == "Namatama":
+    elif section == "Namatama Ext":
         sect = 22
         area = 1
     elif section == "Ngwenya":
         sect = 23
         area = 0
-    elif section == "NottieBrod":
+    elif section == "Nottie Brodie":
         sect = 25
         area = 2
     elif section == "Railways":
         sect = 26
         area = 1
-    elif section == "TownArea":
+    elif section == "Town Area":
         sect = 27
         area = 2
     elif section == "Zecco":
@@ -568,17 +593,6 @@ if selected == "Rent Evaluation":
     st.subheader("Disclaimer!")
     st.warning('''Please NOTE: Values generated by the AI or predictive model are not exact.
      They are just predictions based on the training data collected from various places.''')
-    st.write('---')
-    st.write('### Limitations')
-    st.info('''
-    - Performs badly on houses with Kitchen Units, Inbuilt Wordbrobes, Water Tanks, Garage etc as it does not consider them existable as it makes predictions.
-    - Poor performance on houses in the following areas: Malota, MD maramba, Zecco, Airport etc as the model was not exposed to alot of training from those areas.
-    - Model assumes all houses have electricity and water. Also assumes all houses are completely built.
-    - Most houses collected as training data were assumed rent prices were independent from electricity and water bills.
-    - Some answers the model will give will be abit off. This is because the model isnt 100%. But it still has enough room for improvement by doing more training and feeding or exposing it to more data.
-    - This Is strickly for Livingstone. Much of the data used to train the model was collected from Livingstone.
-
-    ''')
 
     st.write('---')
     st.info('''The Model was built to help people evaluate how much houses cost
@@ -592,7 +606,7 @@ if selected == "Compare Places":
 
     st.title("Locas AI")
     st.write('---')
-    st.info("### Make Comparables Based on Locatins/Sections")
+    st.info("### Make Comparables Based on Locations/Sections")
 
     st.write("### Inputs Here....")
 
@@ -601,7 +615,7 @@ if selected == "Compare Places":
 
     broom = st.number_input("Number of Bedrooms", step=1)
     year = st.number_input("Current Year eg 2023", 2023)
-    in_toilet = st.selectbox("Self Contained?",
+    in_toilet = st.selectbox("Self Contained? [Inside Toilet]",
                              ["Yes", "No"])
     if in_toilet == "Yes":
         toilet = 1
@@ -671,33 +685,34 @@ if selected == "Compare Places":
     ''')
 
     section = st.selectbox(
-        "Section Located 1", [217, "Dcentral", "Dnorth", "DNorthEx", "Dside", "DSVEtx", "EllenBrittel", "KombeDrive",
-                              "Highlands", "Libuyu", "Linda", "MA [Maramba]", "Malota", "MB [Maramba]",
-                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Mesinja [Maramba]", "Namatama", "Ngwenya",
-                              "NottieBrod", "Railways", "TownArea", "Zecco"])
+        "Section Located 1", [217, "Dambwa Central", "Dambwa North", "Dambwa North Ext", "Dambwa Site",
+                              "Dambwa Site Ext", "Ellaine Brittel", "Kombe Drive", "Highlands", "Libuyu",
+                              "Linda", "MA [Maramba]", "MB [Maramba]",
+                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Messanger [Maramba]",
+                              "Namatama Ext", "Ngwenya", "Nottie Brodie", "Railways", "Town Area"])
 
     if section == 217:
         sect = 0
         area = 2
-    elif section == "Dcentral":
+    elif section == "Dambwa Central":
         sect = 5
         area = 1
-    elif section == "Dnorth":
+    elif section == "Dambwa North":
         sect = 6
         area = 1
-    elif section == "DNorthEx":
+    elif section == "Dambwa North Ext":
         sect = 3
         area = 2
-    elif section == "Dside":
+    elif section == "Dambwa Site":
         sect = 8
         area = 1
-    elif section == "DSVEtx":
+    elif section == "Dambwa Site Ext":
         sect = 4
         area = 1
-    elif section == "EllenBrittel":
+    elif section == "Ellaine Brittel":
         sect = 9
         area = 2
-    elif section == "KombeDrive":
+    elif section == "Kombe Drive":
         sect = 11
         area = 2
     elif section == "Highlands":
@@ -727,22 +742,22 @@ if selected == "Compare Places":
     elif section == "ME [Maramba]":
         sect = 18
         area = 1
-    elif section == "Mesinja [Maramba]":
+    elif section == "Messanger [Maramba]":
         sect = 21
         area = 1
-    elif section == "Namatama":
+    elif section == "Namatama Ext":
         sect = 22
         area = 1
     elif section == "Ngwenya":
         sect = 23
         area = 0
-    elif section == "NottieBrod":
+    elif section == "Nottie Brodie":
         sect = 25
         area = 2
     elif section == "Railways":
         sect = 26
         area = 1
-    elif section == "TownArea":
+    elif section == "Town Area":
         sect = 27
         area = 2
     elif section == "Zecco":
@@ -750,33 +765,34 @@ if selected == "Compare Places":
         area = 0
 
     section2 = st.selectbox(
-        "Section Located 2", [217, "Dcentral", "Dnorth", "DNorthEx", "Dside", "DSVEtx", "EllenBrittel", "KombeDrive",
-                              "Highlands", "Libuyu", "Linda", "MA [Maramba]", "Malota", "MB [Maramba]",
-                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Mesinja [Maramba]", "Namatama", "Ngwenya",
-                              "NottieBrod", "Railways", "TownArea", "Zecco"])
+        "Section Located 2", [217, "Dambwa Central", "Dambwa North", "Dambwa North Ext", "Dambwa Site",
+                              "Dambwa Site Ext", "Ellaine Brittel", "Kombe Drive", "Highlands", "Libuyu",
+                              "Linda", "MA [Maramba]", "MB [Maramba]",
+                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Messanger [Maramba]",
+                              "Namatama Ext", "Ngwenya", "Nottie Brodie", "Railways", "Town Area"])
 
     if section2 == 217:
         sect2 = 0
         area = 2
-    elif section2 == "Dcentral":
+    elif section2 == "Dambwa Central":
         sect2 = 5
         area = 1
-    elif section2 == "Dnorth":
+    elif section2 == "Dambwa North":
         sect2 = 6
         area = 1
-    elif section2 == "DNorthEx":
+    elif section2 == "Dambwa North Ext":
         sect2 = 3
         area = 2
-    elif section2 == "Dside":
+    elif section2 == "Dambwa Site":
         sect2 = 8
         area = 1
-    elif section2 == "DSVEtx":
+    elif section2 == "Dambwa Site Ext":
         sect2 = 4
         area = 1
-    elif section2 == "EllenBrittel":
+    elif section2 == "Ellaine Brittel":
         sect2 = 9
         area = 2
-    elif section2 == "KombeDrive":
+    elif section2 == "Kombe Drive":
         sect2 = 11
         area = 2
     elif section2 == "Highlands":
@@ -806,22 +822,22 @@ if selected == "Compare Places":
     elif section2 == "ME [Maramba]":
         sect2 = 18
         area = 1
-    elif section2 == "Mesinja [Maramba]":
+    elif section2 == "Messanger [Maramba]":
         sect2 = 21
         area = 1
-    elif section2 == "Namatama":
+    elif section2 == "Namatama Ext":
         sect2 = 22
         area = 1
     elif section2 == "Ngwenya":
         sect2 = 23
         area = 0
-    elif section2 == "NottieBrod":
+    elif section2 == "Nottie Brodie":
         sect2 = 25
         area = 2
     elif section2 == "Railways":
         sect2 = 26
         area = 1
-    elif section2 == "TownArea":
+    elif section2 == "Town Area":
         sect2 = 27
         area = 2
     elif section2 == "Zecco":
@@ -829,33 +845,34 @@ if selected == "Compare Places":
         area = 0
 
     section3 = st.selectbox(
-        "Section Located 3", [217, "Dcentral", "Dnorth", "DNorthEx", "Dside", "DSVEtx", "EllenBrittel", "KombeDrive",
-                              "Highlands", "Libuyu", "Linda", "MA [Maramba]", "Malota", "MB [Maramba]",
-                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Mesinja [Maramba]", "Namatama",
-                              "Ngwenya", "NottieBrod", "Railways", "TownArea", "Zecco"])
+        "Section Located 3", [217, "Dambwa Central", "Dambwa North", "Dambwa North Ext", "Dambwa Site",
+                              "Dambwa Site Ext", "Ellaine Brittel", "Kombe Drive", "Highlands", "Libuyu",
+                              "Linda", "MA [Maramba]", "MB [Maramba]",
+                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Messanger [Maramba]",
+                              "Namatama Ext", "Ngwenya", "Nottie Brodie", "Railways", "Town Area"])
 
     if section3 == 217:
         sect3 = 0
         area = 2
-    elif section3 == "Dcentral":
+    elif section3 == "Dambwa Central":
         sect3 = 5
         area = 1
-    elif section3 == "Dnorth":
+    elif section3 == "Dambwa North":
         sect3 = 6
         area = 1
-    elif section3 == "DNorthEx":
+    elif section3 == "Dambwa North Ext":
         sect3 = 3
         area = 2
-    elif section3 == "Dside":
+    elif section3 == "Dambwa Site":
         sect3 = 8
         area = 1
-    elif section3 == "DSVEtx":
+    elif section3 == "Dambwa Site Ext":
         sect3 = 4
         area = 1
-    elif section3 == "EllenBrittel":
+    elif section3 == "Ellaine Brittel":
         sect3 = 9
         area = 2
-    elif section3 == "KombeDrive":
+    elif section3 == "Kombe Drive":
         sect3 = 11
         area = 2
     elif section3 == "Highlands":
@@ -885,22 +902,22 @@ if selected == "Compare Places":
     elif section3 == "ME [Maramba]":
         sect3 = 18
         area = 1
-    elif section3 == "Mesinja [Maramba]":
+    elif section3 == "Messanger [Maramba]":
         sect3 = 21
         area = 1
-    elif section3 == "Namatama":
+    elif section3 == "Namatama Ext":
         sect3 = 22
         area = 1
     elif section3 == "Ngwenya":
         sect3 = 23
         area = 0
-    elif section3 == "NottieBrod":
+    elif section3 == "Nottie Brodie":
         sect3 = 25
         area = 2
     elif section3 == "Railways":
         sect3 = 26
         area = 1
-    elif section3 == "TownArea":
+    elif section3 == "Town Area":
         sect3 = 27
         area = 2
     elif section3 == "Zecco":
@@ -908,33 +925,34 @@ if selected == "Compare Places":
         area = 0
 
     section4 = st.selectbox(
-        "Section Located 4", [217, "Dcentral", "Dnorth", "DNorthEx", "Dside", "DSVEtx", "EllenBrittel",
-                              "KombeDrive", "Highlands", "Libuyu", "Linda", "MA [Maramba]", "Malota", "MB [Maramba]", "MC [Maramba]",
-                              "MD [Maramba]", "ME [Maramba]", "Mesinja [Maramba]", "Namatama", "Ngwenya",
-                              "NottieBrod", "Railways", "TownArea", "Zecco"])
+        "Section Located 4", [217, "Dambwa Central", "Dambwa North", "Dambwa North Ext", "Dambwa Site",
+                              "Dambwa Site Ext", "Ellaine Brittel", "Kombe Drive", "Highlands", "Libuyu",
+                              "Linda", "MA [Maramba]", "MB [Maramba]",
+                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Messanger [Maramba]",
+                              "Namatama Ext", "Ngwenya", "Nottie Brodie", "Railways", "Town Area"])
 
     if section4 == 217:
         sect4 = 0
         area = 2
-    elif section4 == "Dcentral":
+    elif section4 == "Dambwa Central":
         sect4 = 5
         area = 1
-    elif section4 == "Dnorth":
+    elif section4 == "Dambwa North":
         sect4 = 6
         area = 1
-    elif section4 == "DNorthEx":
+    elif section4 == "Dambwa North Ext":
         sect4 = 3
         area = 2
-    elif section4 == "Dside":
+    elif section4 == "Dambwa Site":
         sect4 = 8
         area = 1
-    elif section4 == "DSVEtx":
+    elif section4 == "Dambwa Site Ext":
         sect4 = 4
         area = 1
-    elif section4 == "EllenBrittel":
+    elif section4 == "Ellaine Brittel":
         sect4 = 9
         area = 2
-    elif section4 == "KombeDrive":
+    elif section4 == "Kombe Drive":
         sect4 = 11
         area = 2
     elif section4 == "Highlands":
@@ -964,22 +982,22 @@ if selected == "Compare Places":
     elif section4 == "ME [Maramba]":
         sect4 = 18
         area = 1
-    elif section4 == "Mesinja [Maramba]":
+    elif section4 == "Messanger [Maramba]":
         sect4 = 21
         area = 1
-    elif section4 == "Namatama":
+    elif section4 == "Namatama Ext":
         sect4 = 22
         area = 1
     elif section4 == "Ngwenya":
         sect4 = 23
         area = 0
-    elif section4 == "NottieBrod":
+    elif section4 == "Nottie Brodie":
         sect4 = 25
         area = 2
     elif section4 == "Railways":
         sect4 = 26
         area = 1
-    elif section4 == "TownArea":
+    elif section4 == "Town Area":
         sect4 = 27
         area = 2
     elif section4 == "Zecco":
@@ -987,33 +1005,34 @@ if selected == "Compare Places":
         area = 0
 
     section5 = st.selectbox(
-        "Section Located 5", [217, "Dcentral", "Dnorth", "DNorthEx", "Dside", "DSVEtx", "EllenBrittel", "KombeDrive",
-                              "Highlands", "Libuyu", "Linda", "MA [Maramba]", "Malota", "MB [Maramba]",
-                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Mesinja [Maramba]", "Namatama", "Ngwenya",
-                              "NottieBrod", "Railways", "TownArea", "Zecco"])
+        "Section Located 5", [217, "Dambwa Central", "Dambwa North", "Dambwa North Ext", "Dambwa Site",
+                              "Dambwa Site Ext", "Ellaine Brittel", "Kombe Drive", "Highlands", "Libuyu",
+                              "Linda", "MA [Maramba]", "MB [Maramba]",
+                              "MC [Maramba]", "MD [Maramba]", "ME [Maramba]", "Messanger [Maramba]",
+                              "Namatama Ext", "Ngwenya", "Nottie Brodie", "Railways", "Town Area"])
 
     if section5 == 217:
         sect5 = 0
         area = 2
-    elif section5 == "Dcentral":
+    elif section5 == "Dambwa Central":
         sect5 = 5
         area = 1
-    elif section5 == "Dnorth":
+    elif section5 == "Dambwa North":
         sect5 = 6
         area = 1
-    elif section5 == "DNorthEx":
+    elif section5 == "Dambwa North Ext":
         sect5 = 3
         area = 2
-    elif section5 == "Dside":
+    elif section5 == "Dambwa Site":
         sect5 = 8
         area = 1
-    elif section5 == "DSVEtx":
+    elif section5 == "Dambwa Site Ext":
         sect5 = 4
         area = 1
-    elif section5 == "EllenBrittel":
+    elif section5 == "Ellaine Brittel":
         sect5 = 9
         area = 2
-    elif section5 == "KombeDrive":
+    elif section5 == "Kombe Drive":
         sect5 = 11
         area = 2
     elif section5 == "Highlands":
@@ -1043,22 +1062,22 @@ if selected == "Compare Places":
     elif section5 == "ME [Maramba]":
         sect5 = 18
         area = 1
-    elif section5 == "Mesinja [Maramba]":
+    elif section5 == "Messanger [Maramba]":
         sect5 = 21
         area = 1
-    elif section5 == "Namatama":
+    elif section5 == "Namatama Ext":
         sect5 = 22
         area = 1
     elif section5 == "Ngwenya":
         sect5 = 23
         area = 0
-    elif section5 == "NottieBrod":
+    elif section5 == "Nottie Brodie":
         sect5 = 25
         area = 2
     elif section5 == "Railways":
         sect5 = 26
         area = 1
-    elif section5 == "TownArea":
+    elif section5 == "Town Area":
         sect5 = 27
         area = 2
     elif section5 == "Zecco":
@@ -1164,17 +1183,6 @@ if selected == "Compare Places":
     of the same Cost area. The rest of the features remain the same- # room, tiles, ceiling, standalone etc. 
     This is because the differences between house prices of places of different Cost areas eg 
     low cost area like Malota and high cost areas like Highland is huge.''')
-    st.write('---')
-    st.write('### Limitations')
-    st.info('''
-    - Performs badly on houses with Kitchen Units, Inbuilt Wordbrobes, Water Tanks, Garage etc as it does not consider them existable as it makes predictions.
-    - Poor performance on houses in the following areas: Malota, MD maramba, Zecco, Airport etc as the model was not exposed to alot of training from those areas.
-    - Model assumes all houses have electricity and water. Also assumes all houses are completely built.
-    - Most houses collected as training data were assumed rent prices were independent from electricity and water bills.
-    - Some answers the model will give will be abit off. This is because the model isnt 100%. But it still has enough room for improvement by doing more training and feeding or exposing it to more data.
-    - This Is strickly for Livingstone. Much of the data used to train the model was collected from Livingstone.
-    
-    ''')
 
     st.write('---')
     st.info('''The Comparables Graph aims at helping people evaluate how much houses cost
@@ -1229,17 +1237,6 @@ if selected == "About Us":
 
     ''')
 
-    st.write('---')
-    st.write('### Limitations')
-    st.info('''
-    - Performs badly on houses with Kitchen Units, Inbuilt Wordbrobes, Water Tanks, Garage etc as it does not consider them existable as it makes predictions.
-    - Poor performance on houses in the following areas: Malota, MD maramba, Zecco, Airport etc as the model was not exposed to alot of training from those areas.
-    - Model assumes all houses have electricity and water. Also assumes all houses are completely built.
-    - Most houses collected as training data were assumed rent prices were independent from electricity and water bills.
-    - Some answers the model will give will be abit off. This is because the model isnt 100%. But it still has enough room for improvement by doing more training and feeding or exposing it to more data.
-    - This Is strickly for Livingstone. Much of the data used to train the model was collected from Livingstone.
-    
-    ''')
     st.write('---')
     st.write('### Our Contacts')
 
